@@ -1,0 +1,7 @@
+Day's End Report
+2-Jan-23
+
+I have successfully understood the assignment and built a wireframe using Flutter. Although, I expected that I would be able to find a suitable map plug-in on the (pub.dev) website. Unfortunately, I did not find one that works on the website and was free of charge (without the need to sign up and provide my credit card data); this is due to the fact that I do not have a credit card at this time.
+I'm going to give flutter another shot tomorrow am by using a free Geocode API Website (https://geocode.maps.co/). If it doesn't work, I'll have to skem through HTML, CSS, and JS to use the provided APIs or any other.
+
+Risk: If I have to skem HTML, CSS, and JS, I may not be able to show off my entire coding abilities, such as UI/UX, wiring clean code, and test cases.
