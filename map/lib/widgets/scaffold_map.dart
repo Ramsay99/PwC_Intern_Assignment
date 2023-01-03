@@ -15,10 +15,11 @@ class Scaffold_pwcmap extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: const Text(
-          'pwcmap',
+          'Map',
           style: TextStyle(
+            fontSize: 28,
             color: Colors.black,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w900,
           ),
         ),
         centerTitle: true,
