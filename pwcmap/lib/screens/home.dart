@@ -92,7 +92,7 @@ class _PwcmapState extends State<Pwcmap> {
 
   void _goToThis_LatLng(double lat, double lng) {
     mapController.center = LatLng(lat, lng);
-    mapController.zoom = 5;
+    mapController.zoom = 10;
     setState(() {});
   }
 
@@ -235,7 +235,7 @@ class _PwcmapState extends State<Pwcmap> {
       type: QuickAlertType.loading,
       title: 'Loading',
       text: 'Please wait while fetching your data',
-      autoCloseDuration: const Duration(seconds: 3),
+      autoCloseDuration: const Duration(seconds: 2),
     );
 
     jsonValue = jsonDecode(forwardGe_String)[0];
