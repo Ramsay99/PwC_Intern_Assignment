@@ -1,32 +1,28 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:http/http.dart' as http;
 
-const String authority = 'geocode.maps.co';
-const String searchUnencodedPath = '/search';
+class Api {
+  static const String authority = 'geocode.maps.co';
+  static const String forwardUnencodedPath = '/search';
+  static String reverseUnencodedPath = '/reverse';
+  static int statusCode_OK = 200;
+  static late Uri uri;
+  static late http.Response response;
+  static late String address = 'EMPTY_ADDRESS';
 
-/// [geolocationTest] is a method to test a website API
-///
-/// To call this method
-/// make sure to call it with
-///
-/// `.then()`
-///
-/// Example:
-/// ```dart
-/// geolocationTest('ADDRESS HERE').then((value) => debugPrint(value));
-/// ```
-Future<String> geolocateJSONText(String address) async {
-  String geolocationJSONText = '';
-  Uri urlSearch = Uri.https(authority, searchUnencodedPath, {
-    'q': {address}
-  });
+  static Future<String> forwardGeocode(String address) async {
+    Api.address = address;
+    uri = Uri.https(authority, forwardUnencodedPath, {
+      'q': {address}
+    });
+    response = await http.get(uri);
 
-  final http.Response response = await http.get(urlSearch);
-  geolocationJSONText += ('\nRequest: ${response.request}');
-  if (response.statusCode == 200) {
-    geolocationJSONText += ('\nBody: ${response.body}');
-  } else {
-    geolocationJSONText += ('\nStatus Failur Code: ${response.statusCode}');
+    return response.body;
   }
 
-  return geolocationJSONText;
+// Uri _getForwardGeocode_Uri() {}
+  bool _isResponseCodeIsOK() {
+    return response.statusCode == statusCode_OK;
+  }
 }
