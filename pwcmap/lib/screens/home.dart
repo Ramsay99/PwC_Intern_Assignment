@@ -1,5 +1,4 @@
 import 'package:http/http.dart' as http;
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:map/map.dart';
@@ -11,6 +10,7 @@ import 'package:pwcmap/utils/map/tile_servers.dart';
 import 'package:pwcmap/utils/map/viewport_painter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:pwcmap/utils/api/map_api.dart' as myApi;
+import 'package:quickalert/quickalert.dart';
 
 class Pwcmap extends StatefulWidget {
   const Pwcmap({super.key});
@@ -35,7 +35,6 @@ class _PwcmapState extends State<Pwcmap> {
   @override
   void initState() {
     super.initState();
-    print('initState Print Debug in home.dart');
 
     mapController = MapController(
       location: const LatLng(32.004252064888014, 35.78445038658061),
@@ -213,16 +212,6 @@ class _PwcmapState extends State<Pwcmap> {
     String cityname = '';
     dynamic jsonValue = '';
 
-    // myApi.Api.forwardGeocode('jordan, amman').then(
-    //   (value) {
-    //     jsonValue = jsonDecode(value)[0];
-    //     print(jsonValue);
-    //     cityname = jsonValue['display_name'];
-    //     // lat = jsonValue['lat'];
-    //     // lng = jsonValue['lon'];
-    //   },
-    // );
-
     // ToDo: use Api class to get response value, instead of [await http.ge...]
     // var forwardGe_String = myApi.Api.forwardGeocode('jordan, amman');
     http.Response response =
@@ -231,6 +220,23 @@ class _PwcmapState extends State<Pwcmap> {
     }));
     String forwardGe_String = response.body;
 
+    if (forwardGe_String == "[]") {
+      QuickAlert.show(
+          context: context,
+          type: QuickAlertType.warning,
+          text:
+              'There were no cities found with the name ${textController.text}\nplease try again with a different city name.');
+      return;
+    }
+
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.loading,
+      title: 'Loading',
+      text: 'Please wait while fetching your data',
+      autoCloseDuration: Duration(seconds: 3),
+    );
+    
     jsonValue = jsonDecode(forwardGe_String)[0];
     print('jsonValue  = = =  $jsonValue');
     cityname = jsonValue['display_name'];
@@ -298,10 +304,20 @@ class _PwcmapState extends State<Pwcmap> {
               padding: const EdgeInsets.only(left: 8),
               child: ElevatedButton(
                 onPressed: () {
-                  // ToDo: Add a checker here before using textController. If textController is empty, then display worning.
-                  _setLatLng(address: textController.text);
-                  // !Bug: [lat,lng]: are sets after _goToThis_LatLng method is called.
-                  _goToThis_LatLng(lat, lng);
+                  if (textController.text.isNotEmpty) {
+                    // ToDo: Add a checker here before using textController. If textController is empty, then display worning.
+                    _setLatLng(address: textController.text);
+                    // !Bug: [lat,lng]: are sets after _goToThis_LatLng method is called.
+                    _goToThis_LatLng(lat, lng);
+                  } else {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.error,
+                      title: 'Oops...',
+                      text:
+                          'You left the Search Box Empty!\nPlease Enter City Name.',
+                    );
+                  }
                 },
                 child: const Text('Search'),
               ),
