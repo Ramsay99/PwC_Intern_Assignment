@@ -1,0 +1,6 @@
+Day's End Report
+3-Jan-23
+
+I successfully Integerated with the free API service, integrating it with a Map Plug-in from (pub.dev), and added alertboxes with a loading spinner. On the other hand, I expected to be able to do more than what I did today. However, achieving a MVP was a pleasant.
+
+Noting that there are ToDos and one Bug to work on the following day.
