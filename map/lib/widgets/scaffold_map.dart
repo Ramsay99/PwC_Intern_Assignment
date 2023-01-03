@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Scaffold_Map extends StatelessWidget {
-  const Scaffold_Map({
+class Scaffold_pwcmap extends StatelessWidget {
+  const Scaffold_pwcmap({
     Key? key,
     required this.body,
   }) : super(key: key);
@@ -15,7 +15,7 @@ class Scaffold_Map extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: const Text(
-          'Map',
+          'pwcmap',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,

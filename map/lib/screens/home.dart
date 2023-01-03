@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/scaffold_map.dart';
 
-class PwcMap extends StatefulWidget {
-  const PwcMap({super.key});
+class Pwcmap extends StatefulWidget {
+  const Pwcmap({super.key});
 
   @override
-  State<PwcMap> createState() => _PwcMapState();
+  State<Pwcmap> createState() => _PwcmapState();
 }
 
-class _PwcMapState extends State<PwcMap> {
+class _PwcmapState extends State<Pwcmap> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold_Map(
+    return Scaffold_pwcmap(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

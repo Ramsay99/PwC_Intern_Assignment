@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.map">
+    package="com.example.pwcmap">
    <application
-        android:label="map"
+        android:label="pwcmap"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mippwcmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
