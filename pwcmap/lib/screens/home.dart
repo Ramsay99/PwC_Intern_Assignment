@@ -20,6 +20,7 @@ class Pwcmap extends StatefulWidget {
 }
 
 class _PwcmapState extends State<Pwcmap> {
+  final LatLng _pwcLatLng = const LatLng(31.956301451143744, 35.90826577794861);
   late final MapController mapController;
   late bool _darkMode;
   late TextEditingController textController;
@@ -37,7 +38,7 @@ class _PwcmapState extends State<Pwcmap> {
     super.initState();
 
     mapController = MapController(
-      location: const LatLng(32.004252064888014, 35.78445038658061),
+      location: _pwcLatLng,
       zoom: 13,
     );
     _darkMode = false;
@@ -234,9 +235,9 @@ class _PwcmapState extends State<Pwcmap> {
       type: QuickAlertType.loading,
       title: 'Loading',
       text: 'Please wait while fetching your data',
-      autoCloseDuration: Duration(seconds: 3),
+      autoCloseDuration: const Duration(seconds: 3),
     );
-    
+
     jsonValue = jsonDecode(forwardGe_String)[0];
     print('jsonValue  = = =  $jsonValue');
     cityname = jsonValue['display_name'];
