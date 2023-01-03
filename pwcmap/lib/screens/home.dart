@@ -1,3 +1,6 @@
+import 'package:http/http.dart' as http;
+
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:map/map.dart';
 import 'package:latlng/latlng.dart';
@@ -7,6 +10,7 @@ import 'package:pwcmap/utils/map/utils.dart';
 import 'package:pwcmap/utils/map/tile_servers.dart';
 import 'package:pwcmap/utils/map/viewport_painter.dart';
 import 'package:flutter/gestures.dart';
+import 'package:pwcmap/utils/api/map_api.dart' as myApi;
 
 class Pwcmap extends StatefulWidget {
   const Pwcmap({super.key});
@@ -18,6 +22,10 @@ class Pwcmap extends StatefulWidget {
 class _PwcmapState extends State<Pwcmap> {
   late final MapController mapController;
   late bool _darkMode;
+  late TextEditingController textController;
+  late double lat;
+  late double lng;
+
   void changeTheme() {
     setState(() {
       _darkMode = !_darkMode;
@@ -27,12 +35,16 @@ class _PwcmapState extends State<Pwcmap> {
   @override
   void initState() {
     super.initState();
+    print('initState Print Debug in home.dart');
 
     mapController = MapController(
       location: const LatLng(32.004252064888014, 35.78445038658061),
       zoom: 13,
     );
     _darkMode = false;
+    textController = TextEditingController();
+    lat = 1;
+    lng = 1;
   }
 
   @override
@@ -78,9 +90,9 @@ class _PwcmapState extends State<Pwcmap> {
     super.dispose();
   }
 
-  void _gotoDefault() {
-    mapController.center = const LatLng(31.987060988434234, 35.8281253127978);
-    mapController.zoom = 14;
+  void _goToThis_LatLng(double lat, double lng) {
+    mapController.center = LatLng(lat, lng);
+    mapController.zoom = 5;
     setState(() {});
   }
 
@@ -196,6 +208,37 @@ class _PwcmapState extends State<Pwcmap> {
     );
   }
 
+  void _setLatLng({String address = 'jordan, amman'}) async {
+    print('\nSearch Pressed');
+    String cityname = '';
+    dynamic jsonValue = '';
+
+    // myApi.Api.forwardGeocode('jordan, amman').then(
+    //   (value) {
+    //     jsonValue = jsonDecode(value)[0];
+    //     print(jsonValue);
+    //     cityname = jsonValue['display_name'];
+    //     // lat = jsonValue['lat'];
+    //     // lng = jsonValue['lon'];
+    //   },
+    // );
+
+    // ToDo: use Api class to get response value, instead of [await http.ge...]
+    // var forwardGe_String = myApi.Api.forwardGeocode('jordan, amman');
+    http.Response response =
+        await http.get(Uri.https('geocode.maps.co', '/search', {
+      'q': {address}
+    }));
+    String forwardGe_String = response.body;
+
+    jsonValue = jsonDecode(forwardGe_String)[0];
+    print('jsonValue  = = =  $jsonValue');
+    cityname = jsonValue['display_name'];
+    lat = double.parse(jsonValue['lat']);
+    lng = double.parse(jsonValue['lon']);
+    print('cn $cityname\nlat $lat \nlng $lng');
+  }
+
   Padding bottomSearchBar() {
     return Padding(
       padding: const EdgeInsets.only(left: 10, bottom: 10),
@@ -207,6 +250,7 @@ class _PwcmapState extends State<Pwcmap> {
               height: 35,
               width: 220,
               child: TextFormField(
+                controller: textController,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -253,7 +297,12 @@ class _PwcmapState extends State<Pwcmap> {
             Padding(
               padding: const EdgeInsets.only(left: 8),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // ToDo: Add a checker here before using textController. If textController is empty, then display worning.
+                  _setLatLng(address: textController.text);
+                  // !Bug: [lat,lng]: are sets after _goToThis_LatLng method is called.
+                  _goToThis_LatLng(lat, lng);
+                },
                 child: const Text('Search'),
               ),
             ),
