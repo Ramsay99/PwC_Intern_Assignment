@@ -69,7 +69,7 @@
 ## About The Project
 
 
-<img src="https://github.com/Ramsay99/PwC_Intern_Assignment/blob/master/Screen%20Shots/outPut-result.PNG" alt="outPut-result img">
+<p><img src="https://github.com/Ramsay99/PwC_Intern_Assignment/blob/master/Screen%20Shots/outPut-result.PNG" alt="outPut-result img"></p>
 
 
 Flutter website application that is used to search for a city name and get that city viewed on screen.
