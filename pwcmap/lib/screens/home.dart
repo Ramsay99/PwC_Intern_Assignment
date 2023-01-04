@@ -43,8 +43,8 @@ class _PwcmapState extends State<Pwcmap> {
     );
     _darkMode = false;
     textController = TextEditingController();
-    lat = 1;
-    lng = 1;
+    lat = 0;
+    lng = 0;
   }
 
   @override
@@ -209,7 +209,7 @@ class _PwcmapState extends State<Pwcmap> {
   }
 
   void _setLatLng({String address = 'jordan, amman'}) async {
-    print('\nSearch Pressed');
+    debugPrint('\nSearch Pressed');
     String cityname = '';
     dynamic jsonValue = '';
 
@@ -219,9 +219,9 @@ class _PwcmapState extends State<Pwcmap> {
         await http.get(Uri.https('geocode.maps.co', '/search', {
       'q': {address}
     }));
-    String forwardGe_String = response.body;
+    String resBodyText = response.body;
 
-    if (forwardGe_String == "[]") {
+    if (resBodyText == "[]") {
       QuickAlert.show(
           context: context,
           type: QuickAlertType.warning,
@@ -238,12 +238,15 @@ class _PwcmapState extends State<Pwcmap> {
       autoCloseDuration: const Duration(seconds: 2),
     );
 
-    jsonValue = jsonDecode(forwardGe_String)[0];
-    print('jsonValue  = = =  $jsonValue');
+    jsonValue = jsonDecode(resBodyText)[0];
+    debugPrint('jsonValue  = = =  $jsonValue');
     cityname = jsonValue['display_name'];
     lat = double.parse(jsonValue['lat']);
     lng = double.parse(jsonValue['lon']);
-    print('cn $cityname\nlat $lat \nlng $lng');
+    debugPrint('cn $cityname\nlat $lat \nlng $lng');
+
+    // This is temp Bug Solution, should be removed after code refactoring/cleaning.
+    _goToThis_LatLng(lat, lng);
   }
 
   Padding bottomSearchBar() {
@@ -255,14 +258,15 @@ class _PwcmapState extends State<Pwcmap> {
           children: [
             SizedBox(
               height: 35,
-              width: 220,
+              width: 260,
               child: TextFormField(
+                maxLength: 19,
                 controller: textController,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
-                decoration: InputDecoration(
+                decoration: InputDecoration(counterText: '',
                   focusColor: Colors.white,
                   //add prefix icon
                   prefixIcon: const Icon(
@@ -306,10 +310,10 @@ class _PwcmapState extends State<Pwcmap> {
               child: ElevatedButton(
                 onPressed: () {
                   if (textController.text.isNotEmpty) {
-                    // ToDo: Add a checker here before using textController. If textController is empty, then display worning.
                     _setLatLng(address: textController.text);
                     // !Bug: [lat,lng]: are sets after _goToThis_LatLng method is called.
-                    _goToThis_LatLng(lat, lng);
+                    // Temp Bug Solution, moved this inside [_setLatLng] method.
+                    // _goToThis_LatLng(lat, lng);
                   } else {
                     QuickAlert.show(
                       context: context,
