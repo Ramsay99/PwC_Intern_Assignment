@@ -75,15 +75,15 @@
 
 <img src="https://github.com/Ramsay99/PwC_Intern_Assignment/blob/master/Screen%20Shots/outPut-result.PNG" alt="outPut-result img">
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Flutter website application that is used to search for a city name and get that city viewed on screen.
+A simple and easy-to-use application with alert box dialogs for errors and warning scenarios as well as a loading alert box.
 
-Here's why:
+Here's why I built it with Flutter:
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should implement DRY principles to the rest of your life :smile:
+- Flutter is a cross-platform framework, which means that a flutter application can run on multiple platforms, including Android, iOS, and a website. 
+- I recently completed my internship in LTUC on flutter development (in November 2022). 
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+I thought of using HTML, CSS, and JS. However, I was thrilled to use the latest technology as a challenge
 
 Use the `BLANK_README.md` to get started.
 
