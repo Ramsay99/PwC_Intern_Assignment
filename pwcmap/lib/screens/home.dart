@@ -52,6 +52,7 @@ class _PwcmapState extends State<Pwcmap> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: Image.asset('pwc.jpeg'),
         elevation: 0,
         title: const Text(
           'Map',
@@ -74,12 +75,14 @@ class _PwcmapState extends State<Pwcmap> {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          map(context),
-          bottomSearchBar(),
-        ],
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            map(context),
+            bottomSearchBar(),
+          ],
+        ),
       ),
     );
   }
@@ -255,76 +258,90 @@ class _PwcmapState extends State<Pwcmap> {
       child: Align(
         alignment: Alignment.bottomLeft,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              height: 35,
-              width: 260,
-              child: TextFormField(
-                maxLength: 19,
-                controller: textController,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+            Row(
+              children: [
+                SizedBox(
+                  height: 35,
+                  width: 260,
+                  child: TextFormField(
+                    maxLength: 19,
+                    controller: textController,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    decoration: InputDecoration(
+                      counterText: '',
+                      focusColor: Colors.white,
+                      //add prefix icon
+                      prefixIcon: const Icon(
+                        Icons.map,
+                        color: Colors.grey,
+                      ),
+
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.blue, width: 1.0),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      fillColor: Colors.grey,
+
+                      //make hint text
+                      hintStyle: TextStyle(
+                        color: Colors.grey.shade900,
+                        fontSize: 16,
+                        fontFamily: "verdana_regular",
+                        fontWeight: FontWeight.w400,
+                      ),
+
+                      //create lable
+                      labelText: 'City Name',
+                      //lable style
+                      labelStyle: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontFamily: "verdana_regular",
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
                 ),
-                decoration: InputDecoration(counterText: '',
-                  focusColor: Colors.white,
-                  //add prefix icon
-                  prefixIcon: const Icon(
-                    Icons.map,
-                    color: Colors.grey,
-                  ),
-
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.blue, width: 1.0),
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  fillColor: Colors.grey,
-
-                  //make hint text
-                  hintStyle: TextStyle(
-                    color: Colors.grey.shade900,
-                    fontSize: 16,
-                    fontFamily: "verdana_regular",
-                    fontWeight: FontWeight.w400,
-                  ),
-
-                  //create lable
-                  labelText: 'City Name',
-                  //lable style
-                  labelStyle: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                    fontFamily: "verdana_regular",
-                    fontWeight: FontWeight.w400,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (textController.text.isNotEmpty) {
+                        _setLatLng(address: textController.text);
+                        // !Bug: [lat,lng]: are sets after _goToThis_LatLng method is called.
+                        // Temp Bug Solution, moved this inside [_setLatLng] method.
+                        // _goToThis_LatLng(lat, lng);
+                      } else {
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.error,
+                          title: 'Oops...',
+                          text:
+                              'You left the Search Box Empty!\nPlease Enter City Name.',
+                        );
+                      }
+                    },
+                    child: const Text('Search'),
                   ),
                 ),
-              ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (textController.text.isNotEmpty) {
-                    _setLatLng(address: textController.text);
-                    // !Bug: [lat,lng]: are sets after _goToThis_LatLng method is called.
-                    // Temp Bug Solution, moved this inside [_setLatLng] method.
-                    // _goToThis_LatLng(lat, lng);
-                  } else {
-                    QuickAlert.show(
-                      context: context,
-                      type: QuickAlertType.error,
-                      title: 'Oops...',
-                      text:
-                          'You left the Search Box Empty!\nPlease Enter City Name.',
-                    );
-                  }
-                },
-                child: const Text('Search'),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Image.asset(
+                'PricewaterhouseCoopers.jpeg',
+                height: 50,
+                width: 200,
               ),
             ),
           ],
