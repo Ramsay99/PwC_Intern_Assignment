@@ -29,8 +29,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Ramsay99/PwC_Intern_Assignment">
-    <img src="blob/master/pwcmap/assets/pwc.jpeg" alt="Pwc Logo" width="80" height="80">
+  <a>
+    <img src="http://photos.prnewswire.com/prnfull/20100917/NY66894LOGO?max=200" alt="Pwc Logo" width="80" height="80">
   </a>
 
   <h3 align="center">PwC Intern Assignment</h3>
