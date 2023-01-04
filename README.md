@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   
-    <img src="http://photos.prnewswire.com/prnfull/20100917/NY66894LOGO?max=200" alt="Pwc Logo" width="80" height="80">
+<img src="http://photos.prnewswire.com/prnfull/20100917/NY66894LOGO?max=200" alt="Pwc Logo" width="80" height="80">
  
 
   <h3 align="center">PwC Intern Assignment</h3>
