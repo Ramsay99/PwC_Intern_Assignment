@@ -29,9 +29,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a>
+  
     <img src="http://photos.prnewswire.com/prnfull/20100917/NY66894LOGO?max=200" alt="Pwc Logo" width="80" height="80">
-  </a>
+ 
 
   <h3 align="center">PwC Intern Assignment</h3>
 
@@ -75,8 +75,17 @@
 
 <img src="https://github.com/Ramsay99/PwC_Intern_Assignment/blob/master/Screen%20Shots/outPut-result.PNG" alt="outPut-result img">
 
+
 Flutter website application that is used to search for a city name and get that city viewed on screen.
 A simple and easy-to-use application with alert box dialogs for errors and warning scenarios as well as a loading alert box.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Built With
+
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+<img src="https://www.argenova.com.tr/uploads/flutter-logo.png" alt="outPut-result img">
 
 Here's why I built it with Flutter:
 
@@ -85,90 +94,53 @@ Here's why I built it with Flutter:
 
 I thought of using HTML, CSS, and JS. However, I was thrilled to use the latest technology as a challenge
 
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-- [![Next][next.js]][next-url]
-- [![React][react.js]][react-url]
-- [![Vue][vue.js]][vue-url]
-- [![Angular][angular.io]][angular-url]
-- [![Svelte][svelte.dev]][svelte-url]
-- [![Laravel][laravel.com]][laravel-url]
-- [![Bootstrap][bootstrap.com]][bootstrap-url]
-- [![JQuery][jquery.com]][jquery-url]
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Here is How to test my website assignment:
+
+Note: Before installing, if you only want to see my output, you can view my assignment by looking at the screen shots I took and saved in the Screen Shots folder.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+you need to download <a href="https://docs.flutter.dev/get-started/install">Flutter.</a>
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+You can install it as a zip file or clone it. As you Wish.
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Run the main.dart file from pwcmap folder on cmd; I recommend running it on Chrome.
+<code>flutter run -d chrome</code>
+make sure that your directory is in pwcmap folder before you run your command.
 
 <!-- ROADMAP -->
 
-## Roadmap
+## Flutter Doctor
+<pre>
+Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.3.10, on Microsoft Windows [Version 10.0.19045.2364], locale en-US)
+[√] Android toolchain - develop for Android devices (Android SDK version 33.0.0)
+[√] Chrome - develop for the web
+[√] Visual Studio - develop for Windows (Visual Studio Community 2022 17.3.1)
+[√] Android Studio (version 2021.3)
+[√] VS Code (version 1.74.2)
+[√] Connected device (3 available)
+[√] HTTP Host Availability
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
+• No issues found!
+</pre>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
-## Contributing
+<!-- ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -185,24 +157,26 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- LICENSE -->
 
-## License
+<!-- ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+ -->
+ 
+ 
 <!-- CONTACT -->
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Ramzi Sayegh - sayegh.ramzi@yahoo.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<a href="https://github.com/Ramsay99/PwC_Intern_Assignment">Ramsay99/PwC_Intern_Assignment</a>
 
 <!-- ACKNOWLEDGMENTS -->
-
+<!-- 
 ## Acknowledgments
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
@@ -217,9 +191,10 @@ Use this space to list resources you find helpful and would like to give credit 
 - [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+ -->
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
